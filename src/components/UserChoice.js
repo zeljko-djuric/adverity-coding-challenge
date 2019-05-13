@@ -4,9 +4,26 @@ import axios from 'axios';
 
 class UserChoice extends React.Component{
 
+    constructor(){
+        super();
+        this.state = {
+            channel: [],
+            campaign: [],
+            clicks: [],
+            impressions: [],
+            info: [] // tmp 
+        }
+    }
+
     componentDidMount(){
-        axios.get('http://typeaheadaggregates.free.beeceptor.com').then(data => {
-        console.log('csv lines', data.data.split('\n'))
+        axios.get('http://www.mocky.io/v2/5cd93aeb300000b721c014b0').then(data => {
+        // this.setState({info: data.data.split('\n')})
+        //console.log('csv lines', data.data.split('\n'))
+        console.log(data.data.split('\n'))
+        this.setState({channel: data.data.match(/[A-Z]{2} ?[|] ?[A-Z]{2}/g)})
+        this.setState({campaign: data.data.match(/[A-Z][a-z]+ ?[|] ?[A-Z][a-z]+/g)})
+        this.setState({clicks: data.data.match(/[0-9]+,/g)})
+        this.setState({impressions: data.data.match(/[0-9]+\n/g)})
         })
     }
 
@@ -15,6 +32,12 @@ class UserChoice extends React.Component{
             <div>
                 <h3>Choose channel or campaign:</h3>
                 <Typeahead/>
+                {/* <h1>{this.state.info[0]}</h1> */}
+                <h1>{this.state.channel[0]}</h1>
+                <h1>{this.state.campaign[0]}</h1>
+                <h1>{this.state.clicks[0]}</h1>
+                <h1>{this.state.impressions[0]}</h1>
+                
             </div>
         )
     }
