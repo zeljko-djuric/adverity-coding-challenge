@@ -31,3 +31,27 @@
     transform: rotate(360deg);
   }
 }
+
+
+.header{
+  background-color: #14354F;
+}
+
+.header_img{
+  width: 20rem;
+  padding: 1rem;
+}
+
+.tittle-box{
+  background-color: #d2d2d2;
+}
+
+.tittle-box{
+  padding: 1rem;
+}
+.tittle-box_tittle{
+  margin: 0;
+  font-weight: 500;
+}
+
+
