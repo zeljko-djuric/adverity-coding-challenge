@@ -9,10 +9,10 @@ class Statistics extends React.Component{
         return(
                 <div>
                     <label>Clicks: </label>
-                    <textarea id="story" name="story"
+                    <textarea id="clicks" name="clicks"
                     rows="1" cols="1"></textarea>
                     <label>Impressions: </label>
-                    <textarea id="story" name="story"
+                    <textarea id="impressions" name="impressions"
                     rows="1" cols="1"></textarea>
                 </div>
         )
