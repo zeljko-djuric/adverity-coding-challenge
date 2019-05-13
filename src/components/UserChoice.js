@@ -11,7 +11,6 @@ class UserChoice extends React.Component{
             campaign: [],
             clicks: [],
             impressions: [],
-            info: [] // tmp 
         }
     }
 
@@ -32,12 +31,10 @@ class UserChoice extends React.Component{
             <div>
                 <h3>Choose channel or campaign:</h3>
                 <Typeahead/>
-                {/* <h1>{this.state.info[0]}</h1> */}
                 <h1>{this.state.channel[0]}</h1>
                 <h1>{this.state.campaign[0]}</h1>
                 <h1>{this.state.clicks[0]}</h1>
                 <h1>{this.state.impressions[0]}</h1>
-                
             </div>
         )
     }
