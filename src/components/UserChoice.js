@@ -1,9 +1,13 @@
 import React from 'react';
-import Typeahead from 'react-select'
+import Typeahead from 'react-select';
+import axios from 'axios';
+
 class UserChoice extends React.Component{
 
-    constructor(props){
-        super(props)
+    componentDidMount(){
+        axios.get('http://typeaheadaggregates.free.beeceptor.com').then(data => {
+        console.log('csv lines', data.data.split('\n'))
+        })
     }
 
     render(){

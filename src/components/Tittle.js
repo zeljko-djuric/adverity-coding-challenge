@@ -2,10 +2,7 @@ import React from 'react';
 
 
 class Tittle extends React.Component{
-    constructor(props){
-        super(props)
-    }
-
+    
     render(){
         return(
             <div className="tittle-box">
