@@ -13,7 +13,6 @@ class UserChoice extends React.Component{
                 <Typeahead/>
             </div>
         )
-
     }
 }
 

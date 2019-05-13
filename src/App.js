@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Tittle from './components/Tittle';
 import UserChoice from './components/UserChoice';
+import Statistics from './components/Statistics';
+
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header/>
       <Tittle/>
       <UserChoice/>
+      <Statistics/>
     </div>
     
   );
