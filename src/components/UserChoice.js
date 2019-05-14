@@ -17,33 +17,34 @@ class UserChoice extends React.Component{
     }
 
     updateStatistic = (event) =>{
+        
 
         //TODO : filter data and aggregate sum for clicks and impressions on the selected dimension
-        var click = 0;
-        var impression = 0;   
+        // var click = 0;
+        // var impression = 0;   
 
-        if(event.label === "Display"){
-            this.state.clicks.forEach(function(elem){
-                click = click + parseInt(elem);
-            })
+        // if(event.label === "Display"){
+        //     this.state.clicks.forEach(function(elem){
+        //         click = click + parseInt(elem);
+        //     })
 
-            this.state.impressions.forEach(function(elem){
-                impression = impression + parseInt(elem);
-            })
-        }
+        //     this.state.impressions.forEach(function(elem){
+        //         impression = impression + parseInt(elem);
+        //     })
+        // }
 
-        if(event.label === "Search"){
-            this.state.clicks.forEach(function(elem){
-                click = click + parseInt(elem);
-            })
+        // if(event.label === "Search"){
+        //     this.state.clicks.forEach(function(elem){
+        //         click = click + parseInt(elem);
+        //     })
 
-            this.state.impressions.forEach(function(elem){
-                impression = impression + parseInt(elem);
-            })
-        }
+        //     this.state.impressions.forEach(function(elem){
+        //         impression = impression + parseInt(elem);
+        //     })
+        // }
 
-        this.setState({click: click})
-        this.setState({impression: impression})
+        // this.setState({click: click})
+        // this.setState({impression: impression})
         
     }
 
@@ -55,8 +56,6 @@ class UserChoice extends React.Component{
         // console.log('data:>>>>>>')
         // console.log(data);
         const rowData = data.data.split('\n');
-        var test = _.groupBy(rowData, 'DE|SN|Accessoires|Brands');
-        var filtriran = _.filter(rowData, function(elem){ return elem === 476; });
         // console.log(test);
         // console.log(rowData);
         //console.log(_.groupBy(['HTML', 'CSS3', 'JS', 'PHP'], 'length'));
@@ -116,7 +115,7 @@ class UserChoice extends React.Component{
         })
 
         const nice_data = _.zip(campaigns,channels,clicks,impressions);
-        console.log(nice_data[1]);
+        //console.log(nice_data);
 
         //**************Kriticno*****************
         return(
