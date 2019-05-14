@@ -12,14 +12,15 @@ class UserChoice extends React.Component{
             clicks: [],
             impressions: [],
             click: 0,
-            impresion: 0
+            impression: 0
         }
     }
 
     updateStatistic = (event) =>{
 
+        //TODO : filter data and aggregate sum for clicks and impressions on the selected dimension
         var click = 0;
-        var impresion = 0;   
+        var impression = 0;   
 
         if(event.label == "Display"){
             this.state.clicks.forEach(function(elem){
@@ -27,7 +28,7 @@ class UserChoice extends React.Component{
             })
 
             this.state.impressions.forEach(function(elem){
-                impresion = impresion + parseInt(elem);
+                impression = impression + parseInt(elem);
             })
         }
 
@@ -37,12 +38,12 @@ class UserChoice extends React.Component{
             })
 
             this.state.impressions.forEach(function(elem){
-                impresion = impresion + parseInt(elem);
+                impression = impression + parseInt(elem);
             })
         }
 
         this.setState({click: click})
-        this.setState({impresion: impresion})
+        this.setState({impression: impression})
         
     }
 
@@ -80,13 +81,13 @@ class UserChoice extends React.Component{
             suggestions.push(singleObj);
         });
         return(
-            <div>
+            <div className="user-choice">
                 <h3>Choose channel or campaign:</h3>
-                <Select options={suggestions} placeholder="" onChange={this.updateStatistic}/>
+                <Select className="select-field" options={suggestions} placeholder="" onChange={this.updateStatistic}/>
                 <label>Clicks: </label>
-                {this.state.click}
+                <span className="clicks">{this.state.click}</span>
                 <label>Impressions: </label>
-                {this.state.impresion}
+                <span className="impressions">{this.state.impression}</span>
             </div>
         )
     }

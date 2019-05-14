@@ -52,3 +52,21 @@
   margin: 0;
   font-weight: 500;
 }
+
+.clicks{
+  color: red;
+  padding-right: 1rem;
+}
+
+.impressions{
+  color:red;
+}
+
+.select-field{
+  width: 40rem;
+  padding-bottom: 1rem;
+}
+
+.user-choice{
+  padding: 1rem;
+}
