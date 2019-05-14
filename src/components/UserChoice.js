@@ -10,10 +10,41 @@ class UserChoice extends React.Component{
             channel: [],
             campaign: [],
             clicks: [],
-            impressions: []
+            impressions: [],
+            click: 0,
+            impresion: 0
         }
     }
 
+    updateStatistic = (event) =>{
+
+        var click = 0;
+        var impresion = 0;   
+
+        if(event.label == "Display"){
+            this.state.clicks.forEach(function(elem){
+                click = click + parseInt(elem);
+            })
+
+            this.state.impressions.forEach(function(elem){
+                impresion = impresion + parseInt(elem);
+            })
+        }
+
+        if(event.label == "Search"){
+            this.state.clicks.forEach(function(elem){
+                click = click + parseInt(elem);
+            })
+
+            this.state.impressions.forEach(function(elem){
+                impresion = impresion + parseInt(elem);
+            })
+        }
+
+        this.setState({click: click})
+        this.setState({impresion: impresion})
+        
+    }
 
     componentDidMount(){
         axios.get('http://www.mocky.io/v2/5cd93aeb300000b721c014b0').then(data => {
@@ -29,10 +60,6 @@ class UserChoice extends React.Component{
             const result = item.split(',');
             //console.log(result[0]);
             
-            // this.setState({campaign: result[0]})
-            // this.setState({channel: result[1]})
-            // this.setState({clicks: result[2]})
-            // this.setState({impressions: result[3]})
         })        
         this.setState({campaign: data.data.match(/[A-Z]{2} ?[|] ?[A-Z]{2} ?[|]? ?[A-Z][a-z]+ ?[|] ?[A-Z][a-z]+/g)})
         this.setState({channel: data.data.match(/Search|Display/g)})
@@ -45,7 +72,8 @@ class UserChoice extends React.Component{
         var suggestions = [
             {label: "Search"},
             {label: "Display"}
-    ]
+        ]
+
         this.state.campaign.forEach(function(entry){
             var singleObj = {}
             singleObj['label'] = entry;
@@ -54,10 +82,11 @@ class UserChoice extends React.Component{
         return(
             <div>
                 <h3>Choose channel or campaign:</h3>
-                <Select options={suggestions}/>
-                {/* <h1>{this.state.channel[1]}</h1>
-                <h1>{this.state.clicks[1]}</h1>
-                <h1>{this.state.impressions[1]}</h1> */}
+                <Select options={suggestions} placeholder="" onChange={this.updateStatistic}/>
+                <label>Clicks: </label>
+                {this.state.click}
+                <label>Impressions: </label>
+                {this.state.impresion}
             </div>
         )
     }

@@ -3,7 +3,6 @@ import './App.css';
 import Header from './components/Header';
 import Tittle from './components/Tittle';
 import UserChoice from './components/UserChoice';
-import Statistics from './components/Statistics';
 
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
       <Header/>
       <Tittle/>
       <UserChoice/>
-      <Statistics/>
     </div>
     
   );
