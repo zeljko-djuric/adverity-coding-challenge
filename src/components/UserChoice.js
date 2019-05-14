@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import axios from 'axios';
-
+import _ from 'lodash';
 class UserChoice extends React.Component{
 
     constructor(args){
@@ -22,7 +22,7 @@ class UserChoice extends React.Component{
         var click = 0;
         var impression = 0;   
 
-        if(event.label == "Display"){
+        if(event.label === "Display"){
             this.state.clicks.forEach(function(elem){
                 click = click + parseInt(elem);
             })
@@ -32,7 +32,7 @@ class UserChoice extends React.Component{
             })
         }
 
-        if(event.label == "Search"){
+        if(event.label === "Search"){
             this.state.clicks.forEach(function(elem){
                 click = click + parseInt(elem);
             })
@@ -55,10 +55,14 @@ class UserChoice extends React.Component{
         // console.log('data:>>>>>>')
         // console.log(data);
         const rowData = data.data.split('\n');
-
+        var test = _.groupBy(rowData, 'DE|SN|Accessoires|Brands');
+        var filtriran = _.filter(rowData, function(elem){ return elem === 476; });
+        // console.log(test);
+        // console.log(rowData);
+        //console.log(_.groupBy(['HTML', 'CSS3', 'JS', 'PHP'], 'length'));
         rowData.map((item) => {
             //console.log(item);
-            const result = item.split(',');
+            //const result = item.split(',');
             //console.log(result[0]);
             
         })        
@@ -68,7 +72,7 @@ class UserChoice extends React.Component{
         this.setState({impressions: data.data.match(/[0-9]+\n/g)})
         })
     }
-
+    
     render(){
         var suggestions = [
             {label: "Search"},
@@ -80,6 +84,41 @@ class UserChoice extends React.Component{
             singleObj['label'] = entry;
             suggestions.push(singleObj);
         });
+
+
+        // ********Kriticno**********
+        var campaigns = []
+        this.state.campaign.forEach(function(entry){
+            var singleObj = {}
+            singleObj['campaign'] = entry;
+            campaigns.push(singleObj);
+        });
+
+        var channels = []
+        this.state.channel.forEach(function(entry){
+            var singleObj = {}
+            singleObj['channel'] = entry;
+            channels.push(singleObj);
+        })
+
+        var clicks = []
+        this.state.clicks.forEach(function(entry){
+            var singleObj = {}
+            singleObj['clicks'] = entry;
+            clicks.push(singleObj);
+        })
+
+        var impressions = []
+        this.state.impressions.forEach(function(entry){
+            var singleObj = {}
+            singleObj['impressions'] = entry;
+            impressions.push(singleObj);
+        })
+
+        const nice_data = _.zip(campaigns,channels,clicks,impressions);
+        console.log(nice_data[1]);
+
+        //**************Kriticno*****************
         return(
             <div className="user-choice">
                 <h3>Choose channel or campaign:</h3>

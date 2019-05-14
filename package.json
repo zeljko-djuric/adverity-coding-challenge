@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash": "^4.17.11",
+    "lodash.groupby": "^4.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
@@ -16,7 +18,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "globals": {
+      "_": true
+    }
   },
   "browserslist": {
     "production": [

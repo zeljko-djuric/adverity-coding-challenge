@@ -1,0 +1,36 @@
+var suggestions = [
+            {campaign: "Search"},
+            {campaign: "Display"}
+        ]
+
+
+        this.state.campaign.forEach(function(entry){
+            var singleObj = {}
+            singleObj['campaign'] = entry;
+            suggestions.push(singleObj);
+        });
+        
+        var channels = []
+        this.state.channel.forEach(function(entry){
+            var singleObj = {}
+            singleObj['channel'] = entry;
+            channels.push(singleObj);
+        })
+
+        var clicks = []
+        this.state.clicks.forEach(function(entry){
+            var singleObj = {}
+            singleObj['clicks'] = entry;
+            clicks.push(singleObj);
+        })
+
+        var impressions = []
+        this.state.impressions.forEach(function(entry){
+            var singleObj = {}
+            singleObj['impressions'] = entry;
+            impressions.push(singleObj);
+        })
+
+        const nice_data = _.zip(suggestions,channels,clicks,impressions);
+        console.log()
+        console.log(nice_data[0]);
