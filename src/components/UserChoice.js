@@ -12,8 +12,7 @@ class UserChoice extends React.Component{
             parsed_data:[],
             click: 0,
             impression: 0,
-            suggestion:[{label: "Search"},
-                        {label:"Display"}]
+            suggestion:[]
         }
     }
 
@@ -74,6 +73,13 @@ class UserChoice extends React.Component{
                         {label: this.state.parsed_data.data[i].campaign}]
             })
         }
+
+        for(var i in this.state.parsed_data.data){             
+            this.setState({
+                suggestion:[...this.state.suggestion,
+                        {label: this.state.parsed_data.data[i].channel}]
+            })
+        }
         })
     }
     render(){
@@ -81,7 +87,7 @@ class UserChoice extends React.Component{
         return(
             <div className="user-choice">
                 <h3>Choose channel or campaign:</h3>
-                <Select className="select-field" options={this.state.suggestion} placeholder="" onChange={this.updateStatistic}/>
+                <Select className="select-field" options={_.uniqWith(this.state.suggestion, _.isEqual)} placeholder="" onChange={this.updateStatistic}/>
                 <label>Clicks: </label>
                 <span className="clicks">{this.state.click}</span>
                 <label>Impressions: </label>
