@@ -22,7 +22,7 @@ class UserChoice extends React.Component{
              if(el.campaign === event.label){
                 return el.clicks;
              }
-             else if(el.channel == event.label){
+             else if(el.channel === event.label){
                  return el.clicks;
              }
           });
@@ -40,7 +40,7 @@ class UserChoice extends React.Component{
             if(el.campaign === event.label){
                return el.impressions;
             }
-            else if(el.channel == event.label){
+            else if(el.channel === event.label){
                 return el.impressions;
             }
          });

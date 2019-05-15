@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Tittle extends React.Component{
     
     render(){

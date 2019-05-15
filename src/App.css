@@ -52,6 +52,9 @@
   margin: 0;
   font-weight: 500;
 }
+.tittle-box_description{
+  font-weight: 500;
+}
 
 .clicks{
   color: red;
