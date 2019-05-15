@@ -12,7 +12,8 @@ class UserChoice extends React.Component{
             parsed_data:[],
             click: 0,
             impression: 0,
-            suggestion:[]
+            suggestion:[{label: "Search"},
+                        {label:"Display"}]
         }
     }
 
@@ -20,8 +21,10 @@ class UserChoice extends React.Component{
         // Calculating clicks 
         var click = this.state.parsed_data.data.filter(function (el) {
              if(el.campaign === event.label){
-                console.log(el.clicks);
                 return el.clicks;
+             }
+             else if(el.channel == event.label){
+                 return el.clicks;
              }
           });
 
@@ -29,7 +32,6 @@ class UserChoice extends React.Component{
         for(var i in click){
             clicks_sum = click[i].clicks + clicks_sum;
         }
-        console.log(clicks_sum)
         this.setState({
             click: clicks_sum
         })
@@ -37,8 +39,10 @@ class UserChoice extends React.Component{
         //Calculating impressions
         var impression = this.state.parsed_data.data.filter(function (el) {
             if(el.campaign === event.label){
-               console.log(el.clicks);
                return el.impressions;
+            }
+            else if(el.channel == event.label){
+                return el.impressions;
             }
          });
 
@@ -46,7 +50,6 @@ class UserChoice extends React.Component{
        for(var i in impression){
            impression_sum = click[i].impressions + impression_sum;
        }
-       console.log(clicks_sum)
        this.setState({
            impression: impression_sum
        })
@@ -55,43 +58,22 @@ class UserChoice extends React.Component{
     componentDidMount(){
         axios.get('http://www.mocky.io/v2/5cd93aeb300000b721c014b0').then(data => {
 
-        const rowData = data.data.split('\n');
-        console.log(data.data)
+        //const rowData = data.data.split('\n');
+        //console.log(data.data)
         this.setState({
                 parsed_data : Papa.parse(data.data,{
-                delimiter: ",",	// auto-detect
-                newline: "",	// auto-detect
-                quoteChar: '"',
-                escapeChar: '"',
+                delimiter: ",",
                 header: true,
-                transformHeader: undefined,
                 dynamicTyping: true,
-                preview: 0,
-                encoding: "",
-                worker: false,
-                comments: false,
-                step: undefined,
-                complete: undefined,
-                error: undefined,
-                download: false,
-                downloadRequestHeaders: undefined,
-                skipEmptyLines: false,
-                chunk: undefined,
-                fastMode: undefined,
-                beforeFirstChunk: undefined,
-                withCredentials: undefined,
-                transform: undefined,
-                delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP]
             })
         })
 
-        for(var i in this.state.parsed_data.data){
+        for(var i in this.state.parsed_data.data){             
             this.setState({
-                //TODO : label must be created dynamically
-                suggestion:[{label: this.state.parsed_data.data[i].campaign}]
+                suggestion:[...this.state.suggestion,
+                        {label: this.state.parsed_data.data[i].campaign}]
             })
         }
-        // console.log(this.state.parsed_data.data);
         })
     }
     render(){
@@ -104,7 +86,6 @@ class UserChoice extends React.Component{
                 <span className="clicks">{this.state.click}</span>
                 <label>Impressions: </label>
                 <span className="impressions">{this.state.impression}</span>
-                <h1>{this.state.cat}</h1>
             </div>
         )
     }
