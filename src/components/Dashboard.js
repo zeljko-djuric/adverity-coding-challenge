@@ -56,7 +56,7 @@ class Dashboard extends React.Component{
              }
           });
 
-        const clicks_sum = 0;
+        let clicks_sum = 0;
         for(let i in click){
             clicks_sum = click[i].clicks + clicks_sum;
         }
@@ -74,7 +74,7 @@ class Dashboard extends React.Component{
             }
          });
 
-       const impression_sum = 0;
+       let impression_sum = 0;
        for(let i in impression){
            impression_sum = click[i].impressions + impression_sum;
        }
