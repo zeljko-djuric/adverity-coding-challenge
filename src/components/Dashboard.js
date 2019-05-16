@@ -43,6 +43,9 @@ class Dashboard extends React.Component{
             })
         }
         })
+        .catch(function (error) {
+            console.log(error.response);
+       });
     }
 
     updateStatistic = (event) =>{
