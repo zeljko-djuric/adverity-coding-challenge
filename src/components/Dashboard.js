@@ -16,44 +16,6 @@ class Dashboard extends React.Component{
         }
     }
 
-    updateStatistic = (event) =>{
-        // Calculating clicks 
-        var click = this.state.parsed_data.data.filter(function (el) {
-             if(el.campaign === event.label){
-                return el.clicks;
-             }
-             else if(el.channel === event.label){
-                 return el.clicks;
-             }
-          });
-
-        var clicks_sum = 0;
-        for(var i in click){
-            clicks_sum = click[i].clicks + clicks_sum;
-        }
-        this.setState({
-            clicks: clicks_sum
-        })
-
-        //Calculating impressions
-        var impression = this.state.parsed_data.data.filter(function (el) {
-            if(el.campaign === event.label){
-               return el.impressions;
-            }
-            else if(el.channel === event.label){
-                return el.impressions;
-            }
-         });
-
-       var impression_sum = 0;
-       for(var i in impression){
-           impression_sum = click[i].impressions + impression_sum;
-       }
-       this.setState({
-           impressions: impression_sum
-       })
-    }
-
     componentDidMount(){
         axios.get('http://www.mocky.io/v2/5cd93aeb300000b721c014b0').then(data => {
 
@@ -67,14 +29,14 @@ class Dashboard extends React.Component{
             })
         })
 
-        for(var i in this.state.parsed_data.data){             
+        for(let i in this.state.parsed_data.data){             
             this.setState({
                 suggestions:[...this.state.suggestions,
                         {label: this.state.parsed_data.data[i].campaign}]
             })
         }
 
-        for(var i in this.state.parsed_data.data){             
+        for(let i in this.state.parsed_data.data){             
             this.setState({
                 suggestions:[...this.state.suggestions,
                         {label: this.state.parsed_data.data[i].channel}]
@@ -82,8 +44,46 @@ class Dashboard extends React.Component{
         }
         })
     }
-    render(){
 
+    updateStatistic = (event) =>{
+        // Calculating clicks 
+        const click = this.state.parsed_data.data.filter(function (el) {
+             if(el.campaign === event.label){
+                return el.clicks;
+             }
+             else if(el.channel === event.label){
+                 return el.clicks;
+             }
+          });
+
+        const clicks_sum = 0;
+        for(let i in click){
+            clicks_sum = click[i].clicks + clicks_sum;
+        }
+        this.setState({
+            clicks: clicks_sum
+        })
+
+        //Calculating impressions
+        const impression = this.state.parsed_data.data.filter(function (el) {
+            if(el.campaign === event.label){
+               return el.impressions;
+            }
+            else if(el.channel === event.label){
+                return el.impressions;
+            }
+         });
+
+       const impression_sum = 0;
+       for(let i in impression){
+           impression_sum = click[i].impressions + impression_sum;
+       }
+       this.setState({
+           impressions: impression_sum
+       })
+    }
+
+    render(){
         return(
             <div className="user-choice">
                 <h3>Choose channel or campaign:</h3>

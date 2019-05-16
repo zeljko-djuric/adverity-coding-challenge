@@ -32,6 +32,7 @@
   }
 }
 
+/* Header */
 .header{
   background-color: #14354F;
 }
@@ -41,6 +42,7 @@
   padding: 1rem;
 }
 
+/* Tittle */
 .tittle-box{
   background-color: #d2d2d2;
 }
@@ -48,14 +50,17 @@
 .tittle-box{
   padding: 1rem;
 }
+
 .tittle-box_tittle{
   margin: 0;
   font-weight: 500;
 }
+
 .tittle-box_description{
   font-weight: 500;
 }
 
+/* Dashboard */
 .clicks{
   color: red;
   padding-right: 1rem;
