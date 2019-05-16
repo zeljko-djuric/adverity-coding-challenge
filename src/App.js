@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import Tittle from './components/Tittle';
-import UserChoice from './components/UserChoice';
+import Dashboard from './components/Dashboard';
 
 
 function App() {
@@ -10,9 +10,8 @@ function App() {
     <div>
       <Header/>
       <Tittle/>
-      <UserChoice/>
+      <Dashboard/>
     </div>
-    
   );
 }
 

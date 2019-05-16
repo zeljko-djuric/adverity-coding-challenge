@@ -4,15 +4,15 @@ import axios from 'axios';
 import _ from 'lodash';
 import Papa from 'papaparse';
 
-class UserChoice extends React.Component{
+class Dashboard extends React.Component{
 
     constructor(args){
         super(args);
         this.state = {
             parsed_data:[],
-            click: 0,
-            impression: 0,
-            suggestion:[]
+            clicks: 0,
+            impressions: 0,
+            suggestions:[]
         }
     }
 
@@ -32,7 +32,7 @@ class UserChoice extends React.Component{
             clicks_sum = click[i].clicks + clicks_sum;
         }
         this.setState({
-            click: clicks_sum
+            clicks: clicks_sum
         })
 
         //Calculating impressions
@@ -50,7 +50,7 @@ class UserChoice extends React.Component{
            impression_sum = click[i].impressions + impression_sum;
        }
        this.setState({
-           impression: impression_sum
+           impressions: impression_sum
        })
     }
 
@@ -69,14 +69,14 @@ class UserChoice extends React.Component{
 
         for(var i in this.state.parsed_data.data){             
             this.setState({
-                suggestion:[...this.state.suggestion,
+                suggestions:[...this.state.suggestions,
                         {label: this.state.parsed_data.data[i].campaign}]
             })
         }
 
         for(var i in this.state.parsed_data.data){             
             this.setState({
-                suggestion:[...this.state.suggestion,
+                suggestions:[...this.state.suggestions,
                         {label: this.state.parsed_data.data[i].channel}]
             })
         }
@@ -87,14 +87,14 @@ class UserChoice extends React.Component{
         return(
             <div className="user-choice">
                 <h3>Choose channel or campaign:</h3>
-                <Select className="select-field" options={_.uniqWith(this.state.suggestion, _.isEqual)} placeholder="" onChange={this.updateStatistic}/>
+                <Select className="select-field" options={_.uniqWith(this.state.suggestions, _.isEqual)} placeholder="" onChange={this.updateStatistic}/>
                 <label>Clicks: </label>
-                <span className="clicks">{this.state.click}</span>
+                <span className="clicks">{this.state.clicks}</span>
                 <label>Impressions: </label>
-                <span className="impressions">{this.state.impression}</span>
+                <span className="impressions">{this.state.impressions}</span>
             </div>
         )
     }
 }
 
-export default UserChoice;
+export default Dashboard;
