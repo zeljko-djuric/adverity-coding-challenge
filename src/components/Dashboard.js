@@ -30,17 +30,17 @@ class Dashboard extends React.Component{
         })
 
         for(let i in this.state.parsed_data.data){             
-            this.setState({
-                suggestions:[...this.state.suggestions,
-                        {label: this.state.parsed_data.data[i].campaign}]
-            })
+            this.setState((state)=>({
+                suggestions:[...state.suggestions,
+                {label: state.parsed_data.data[i].campaign}]
+            }));
         }
 
         for(let i in this.state.parsed_data.data){             
-            this.setState({
-                suggestions:[...this.state.suggestions,
-                        {label: this.state.parsed_data.data[i].channel}]
-            })
+            this.setState((state)=>({
+                suggestions:[...state.suggestions,
+                {label: state.parsed_data.data[i].channel}]
+            }));
         }
         })
         .catch(function (error) {
