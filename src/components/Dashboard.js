@@ -9,48 +9,44 @@ class Dashboard extends React.Component{
     constructor(args){
         super(args);
         this.state = {
-            parsed_data:[],
+            dataCSV:[],
+            suggestions:[],
             clicks: 0,
-            impressions: 0,
-            suggestions:[]
+            impressions: 0
         }
     }
 
     componentDidMount(){
-        axios.get('http://www.mocky.io/v2/5cd93aeb300000b721c014b0').then(data => {
+        axios.get('http://www.mocky.io/v2/5cd93aeb300000b721c014b0').then(rawData => {
 
         //const rowData = data.data.split('\n');
-        //console.log(data.data)
+        const parserConfig = {
+            delimiter: ",",
+            header: true,
+            dynamicTyping: true
+        }
+
         this.setState({
-                parsed_data : Papa.parse(data.data,{
-                delimiter: ",",
-                header: true,
-                dynamicTyping: true,
-            })
+                dataCSV : Papa.parse(rawData.data, parserConfig)
         })
 
-        for(let i in this.state.parsed_data.data){             
+        this.state.dataCSV.data.forEach((element, i) => {
             this.setState((state)=>({
                 suggestions:[...state.suggestions,
-                {label: state.parsed_data.data[i].campaign}]
+                {label: state.dataCSV.data[i].campaign},
+                {label: state.dataCSV.data[i].channel}]
             }));
-        }
-
-        for(let i in this.state.parsed_data.data){             
-            this.setState((state)=>({
-                suggestions:[...state.suggestions,
-                {label: state.parsed_data.data[i].channel}]
-            }));
-        }
+        });
         })
         .catch(function (error) {
             console.log(error.response);
        });
     }
 
-    updateStatistic = (event) =>{
+    calculateClicksAndImpressions = (event) =>{
+
         // Calculating clicks 
-        const click = this.state.parsed_data.data.filter(function (el) {
+        const click = this.state.dataCSV.data.filter(function (el) {
              if(el.campaign === event.label){
                 return el.clicks;
              }
@@ -68,7 +64,7 @@ class Dashboard extends React.Component{
         })
 
         //Calculating impressions
-        const impression = this.state.parsed_data.data.filter(function (el) {
+        const impression = this.state.dataCSV.data.filter(function (el) {
             if(el.campaign === event.label){
                return el.impressions;
             }
@@ -90,11 +86,13 @@ class Dashboard extends React.Component{
         return(
             <div className="user-choice">
                 <h3>Choose channel or campaign:</h3>
-                <Select className="select-field" options={_.uniqWith(this.state.suggestions, _.isEqual)} placeholder="" onChange={this.updateStatistic}/>
+                <Select className="select-field" options={_.uniqWith(this.state.suggestions, _.isEqual)}
+                placeholder="" onChange={this.calculateClicksAndImpressions}/>
                 <label>Clicks: </label>
                 <span className="clicks">{this.state.clicks}</span>
                 <label>Impressions: </label>
                 <span className="impressions">{this.state.impressions}</span>
+                <h1>{this.state.klikovi}</h1>
             </div>
         )
     }
