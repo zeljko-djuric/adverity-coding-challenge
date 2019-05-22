@@ -28,7 +28,7 @@ class App extends React.Component {
                 dataCSV : Papa.parse(rawData.data, parserConfig)
         })
         }).catch(function (error) {
-            console.log('Error during axios get request');
+            console.log('Error during axios get request:');
             console.log(error.response);
        });
     }

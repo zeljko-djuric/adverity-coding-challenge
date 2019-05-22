@@ -24,47 +24,22 @@ class Dashboard extends React.Component{
     }
 
     calculateClicksAndImpressions = (event) =>{
-
-        // Calculating clicks 
-        const click = this.props.dataCSV.data.filter(function (el) {
-             if(el.campaign === event.label){
-                return el.clicks;
-             }
-             else if(el.channel === event.label){
-                 return el.clicks;
-             }
-          });
-
-        let clicks_sum = 0;
-        for(let i in click){
-            clicks_sum = click[i].clicks + clicks_sum;
-        }
-        this.setState({
-            clicks: clicks_sum
+        const filteredData = this.props.dataCSV.data.filter(element => {
+            if (element.campaign === event.label || element.channel === event.label) {
+                return element;
+            }
         })
 
-        //Calculating impressions
-        const impression = this.props.dataCSV.data.filter(function (el) {
-            if(el.campaign === event.label){
-               return el.impressions;
-            }
-            else if(el.channel === event.label){
-                return el.impressions;
-            }
-         });
+        const totalClicks = _.sumBy(filteredData, 'clicks');
+        const totalImpressions = _.sumBy(filteredData, 'impressions');
 
-       let impression_sum = 0;
-       for(let i in impression){
-           impression_sum = click[i].impressions + impression_sum;
-       }
-       this.setState({
-           impressions: impression_sum
-       })
+        this.setState({
+                clicks: totalClicks,
+                impressions: totalImpressions
+        })
     }
 
     render(){
-    console.log("Dashboard redner >>>>>>>")
-    console.log(this.props.dataCSV)
         return(
             <div className="user-choice">
                 <h3>Choose channel or campaign:</h3>
