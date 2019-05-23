@@ -25,14 +25,19 @@ class Dashboard extends React.Component {
   }
 
   calculateClicksAndImpressions = event => {
-    const filteredData = this.props.dataCSV.data.filter(element => {
-      if (element.campaign === event.label || element.channel === event.label) {
+    const selectedSuggestion = event.label;
+    const rawData = this.props.dataCSV.data;
+    const clicksAndImpressions = rawData.filter(element => {
+      if (
+        element.campaign === selectedSuggestion ||
+        element.channel === selectedSuggestion
+      ) {
         return element;
       }
     });
 
-    const totalClicks = _.sumBy(filteredData, "clicks");
-    const totalImpressions = _.sumBy(filteredData, "impressions");
+    const totalClicks = _.sumBy(clicksAndImpressions, "clicks");
+    const totalImpressions = _.sumBy(clicksAndImpressions, "impressions");
 
     this.setState({
       clicks: totalClicks,
@@ -43,13 +48,14 @@ class Dashboard extends React.Component {
   render() {
     const numberOfClicks = this.state.clicks;
     const numberOfImpresions = this.state.impressions;
+    const selectSuggestions = _.uniqWith(this.state.suggestions, _.isEqual);
     return (
       <div className="user-choice">
         <h3>Choose channel or campaign:</h3>
 
         <Select
           className="select-field"
-          options={_.uniqWith(this.state.suggestions, _.isEqual)}
+          options={selectSuggestions}
           placeholder=""
           onChange={this.calculateClicksAndImpressions}
         />
