@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Title from "./components/Title";
-import Dashboard from "./components/Dashboard";
+import DisplayMetrics from "./components/DisplayMetrics";
 import Papa from "papaparse";
 import axios from "axios";
 
@@ -41,7 +41,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Title />
-        <Dashboard dataCSV={dataCSV} />
+        <DisplayMetrics dataCSV={dataCSV} />
       </div>
     );
   }

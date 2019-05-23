@@ -2,7 +2,7 @@ import React from "react";
 import Select from "react-select";
 import _ from "lodash";
 
-class Dashboard extends React.Component {
+class DisplayMetrics extends React.Component {
   constructor(args) {
     super(args);
     this.state = {
@@ -69,4 +69,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default DisplayMetrics;
