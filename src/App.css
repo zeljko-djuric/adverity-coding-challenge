@@ -33,48 +33,48 @@
 }
 
 /* Header */
-.header{
-  background-color: #14354F;
+.header {
+  background-color: #14354f;
 }
 
-.header_img{
+.header_img {
   width: 20rem;
   padding: 1rem;
 }
 
 /* Tittle */
-.tittle-box{
+.tittle-box {
   background-color: #d2d2d2;
 }
 
-.tittle-box{
+.tittle-box {
   padding: 1rem;
 }
 
-.tittle-box_tittle{
+.tittle-box_tittle {
   margin: 0;
   font-weight: 500;
 }
 
-.tittle-box_description{
+.tittle-box_description {
   font-weight: 500;
 }
 
 /* Dashboard */
-.clicks{
+.clicks {
   color: red;
   padding-right: 1rem;
 }
 
-.impressions{
-  color:red;
+.impressions {
+  color: red;
 }
 
-.select-field{
+.select-field {
   width: 40rem;
   padding-bottom: 1rem;
 }
 
-.user-choice{
+.user-choice {
   padding: 1rem;
 }

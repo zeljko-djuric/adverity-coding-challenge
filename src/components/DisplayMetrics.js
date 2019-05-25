@@ -39,6 +39,25 @@ class DisplayMetrics extends React.Component {
     const totalClicks = _.sumBy(clicksAndImpressions, "clicks");
     const totalImpressions = _.sumBy(clicksAndImpressions, "impressions");
 
+    // Another solution for calculating sum and clicks
+    // const newCalculationClicks = _.sumBy(rawData, function(element) {
+    //   if (
+    //     element.campaign === selectedSuggestion ||
+    //     element.channel === selectedSuggestion
+    //   )
+    //     return element.clicks;
+    // });
+    // console.log(newCalculationClicks);
+
+    // const newCalculationImpressions = _.sumBy(rawData, function(element) {
+    //   if (
+    //     element.campaign === selectedSuggestion ||
+    //     element.channel === selectedSuggestion
+    //   )
+    //     return element.impressions;
+    // });
+    // console.log(newCalculationImpressions);
+
     this.setState({
       clicks: totalClicks,
       impressions: totalImpressions
