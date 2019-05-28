@@ -1,9 +1,8 @@
 import React from "react";
-import logo from "../img/logo.png";
 
-const Header = () => (
+const Header = props => (
   <div className="header">
-    <img className="header_img" src={logo} alt="Logo" />
+    <img className="header_img" src={props.ImageUrl} alt="Logo" />
   </div>
 );
 

@@ -1,11 +1,9 @@
 import React from "react";
 
-const Title = () => (
+const Title = props => (
   <div className="tittle-box">
-    <h1 className="tittle-box_tittle">Programming Challenge</h1>
-    <p className="tittle-box_description">
-      JavaScript: datastructures, typeAhead, groupBy / filter, aggregates
-    </p>
+    <h1 className="tittle-box_tittle">{props.title}</h1>
+    <p className="tittle-box_description">{props.description}</p>
   </div>
 );
 

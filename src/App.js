@@ -36,11 +36,15 @@ class App extends React.Component {
 
   render() {
     const dataCSV = this.state.dataCSV;
+    const title = "Programming Challenge";
+    const description =
+      "JavaScript: datastructures, typeAhead, groupBy / filter, aggregates";
+    const ImageUrl = require("./img/logo.png");
 
     return (
       <div>
-        <Header />
-        <Title />
+        <Header ImageUrl={ImageUrl} />
+        <Title title={title} description={description} />
         <DisplayMetrics dataCSV={dataCSV} />
       </div>
     );
