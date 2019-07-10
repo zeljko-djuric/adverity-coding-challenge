@@ -30,8 +30,8 @@ class DisplayMetrics extends React.Component {
 
     const clicksAndImpressions = _.filter(rawData, element => {
       if (
-        element.campaign === selectedSuggestion ||
-        element.channel === selectedSuggestion
+        _.isEqual(element.campaign, selectedSuggestion) ||
+        _.isEqual(element.channel, selectedSuggestion)
       ) {
         return element;
       }
