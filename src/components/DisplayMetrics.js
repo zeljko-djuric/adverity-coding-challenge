@@ -80,9 +80,9 @@ class DisplayMetrics extends React.Component {
           onChange={this.calculateClicksAndImpressions}
         />
 
-        <label>Clicks: </label>
+        <label>{this.props.labelOneText}</label>
         <span className="clicks">{numberOfClicks}</span>
-        <label>Impressions: </label>
+        <label>{this.props.labelTwoText}</label>
         <span className="impressions">{numberOfImpresions}</span>
       </div>
     );
