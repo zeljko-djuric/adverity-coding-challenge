@@ -71,7 +71,7 @@ class DisplayMetrics extends React.Component {
     const selectSuggestions = _.uniqWith(this.state.suggestions, _.isEqual);
     return (
       <div className="user-choice">
-        <h3>Choose channel or campaign:</h3>
+        <h3>{this.props.title}</h3>
 
         <Select
           className="select-field"
