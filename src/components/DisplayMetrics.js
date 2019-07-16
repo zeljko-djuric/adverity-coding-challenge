@@ -6,7 +6,8 @@ class DisplayMetrics extends React.Component {
   constructor(args) {
     super(args);
     this.state = {
-      suggestions: [],
+      suggestionsForCampaign: [],
+      suggestionsForChannel: [],
       clicks: 0,
       impressions: 0
     };
@@ -15,9 +16,12 @@ class DisplayMetrics extends React.Component {
   componentWillReceiveProps(props) {
     props.dataCSV.data.forEach((element, i) => {
       this.setState((state, props) => ({
-        suggestions: [
-          ...state.suggestions,
-          { label: props.dataCSV.data[i].campaign },
+        suggestionsForCampaign: [
+          ...state.suggestionsForCampaign,
+          { label: props.dataCSV.data[i].campaign }
+        ],
+        suggestionsForChannel: [
+          ...state.suggestionsForChannel,
           { label: props.dataCSV.data[i].channel }
         ]
       }));
@@ -68,7 +72,10 @@ class DisplayMetrics extends React.Component {
   render() {
     const numberOfClicks = this.state.clicks;
     const numberOfImpresions = this.state.impressions;
-    const selectSuggestions = _.uniqWith(this.state.suggestions, _.isEqual);
+    const selectSuggestions = _.uniqWith(
+      this.state.suggestionsForCampaign,
+      _.isEqual
+    );
     return (
       <div className="user-choice">
         <h3>Choose channel or campaign:</h3>
