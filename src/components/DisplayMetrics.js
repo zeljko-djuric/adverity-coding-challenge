@@ -1,27 +1,20 @@
 import React from "react";
 import Select from "react-select";
 import _ from "lodash";
-
+import extractOptions from "../utils/extractOptions";
 class DisplayMetrics extends React.Component {
   constructor(args) {
     super(args);
     this.state = {
-      suggestions: [],
+      options: [],
       clicks: 0,
       impressions: 0
     };
   }
 
   componentWillReceiveProps(props) {
-    props.dataCSV.data.forEach((element, i) => {
-      this.setState((state, props) => ({
-        suggestions: [
-          ...state.suggestions,
-          { label: props.dataCSV.data[i].campaign },
-          { label: props.dataCSV.data[i].channel }
-        ]
-      }));
-    });
+    const opt = extractOptions(props.dataCSV);
+    console.log(opt);
   }
 
   calculateClicksAndImpressions = event => {
