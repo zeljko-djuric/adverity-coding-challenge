@@ -13,14 +13,9 @@ class DisplayMetrics extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    const tmp = extractOptions(props.dataCSV);
-
     this.setState((state, props) => ({
-      options: [...state.options, { label: extractOptions(props.dataCSV) }]
+      options: extractOptions(props.dataCSV)
     }));
-    console.log(tmp);
-    console.log(">>>>>");
-    console.log(this.state.options);
   }
 
   calculateClicksAndImpressions = event => {
@@ -67,7 +62,7 @@ class DisplayMetrics extends React.Component {
   render() {
     const numberOfClicks = this.state.clicks;
     const numberOfImpresions = this.state.impressions;
-    const options = _.uniqWith(this.state.suggestions, _.isEqual);
+    const options = _.uniqWith(this.state.options, _.isEqual);
     return (
       <div className="user-choice">
         <h3>Choose channel or campaign:</h3>

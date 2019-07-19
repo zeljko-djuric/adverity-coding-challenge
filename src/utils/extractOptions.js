@@ -3,8 +3,8 @@ const extractOptions = dataCSV => {
   dataCSV.data.forEach((element, i) => {
     options = [
       ...options,
-      { campaign: dataCSV.data[i].campaign },
-      { channel: dataCSV.data[i].channel }
+      { label: dataCSV.data[i].campaign },
+      { label: dataCSV.data[i].channel }
     ];
   });
   return options;
