@@ -45,7 +45,7 @@ class App extends React.Component {
       <div>
         <Header ImageUrl={ImageUrl} />
         <Title title={title} description={description} />
-        <DisplayMetrics dataCSV={dataCSV} />
+        <DisplayMetrics data={dataCSV} />
       </div>
     );
   }

@@ -14,13 +14,13 @@ class DisplayMetrics extends React.Component {
 
   componentWillReceiveProps(props) {
     this.setState((state, props) => ({
-      options: extractOptions(props.dataCSV)
+      options: extractOptions(props.data)
     }));
   }
 
   calculateClicksAndImpressions = event => {
     const selectedSuggestion = event.label;
-    const rawData = this.props.dataCSV.data;
+    const rawData = this.props.data.data;
 
     const clicksAndImpressions = _.filter(rawData, element => {
       if (
