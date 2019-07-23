@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import _ from "lodash";
+import MetricValue from "./MetricValue";
 
 class DisplayMetrics extends React.Component {
   constructor(args) {
@@ -79,11 +80,12 @@ class DisplayMetrics extends React.Component {
           placeholder=""
           onChange={this.calculateClicksAndImpressions}
         />
-
-        <label>{this.props.labelOneText}</label>
-        <span className="clicks">{numberOfClicks}</span>
-        <label>{this.props.labelTwoText}</label>
-        <span className="impressions">{numberOfImpresions}</span>
+        <MetricValue
+          labelOneText="Clicks: "
+          labelTwoText="Impressions: "
+          numberOfClicks={numberOfClicks}
+          numberOfImpresions={numberOfImpresions}
+        />
       </div>
     );
   }
