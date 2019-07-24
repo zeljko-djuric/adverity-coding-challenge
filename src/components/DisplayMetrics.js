@@ -39,6 +39,7 @@ class DisplayMetrics extends React.Component {
     const numberOfClicks = calculateClicks(campaignOrChannel, data);
     const numberOfImpresions = calculateImpressions(campaignOrChannel, data);
     const selectSuggestions = _.uniqWith(this.state.suggestions, _.isEqual);
+
     return (
       <div className="user-choice">
         <h3>Choose channel or campaign:</h3>
