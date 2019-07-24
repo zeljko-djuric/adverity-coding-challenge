@@ -34,7 +34,7 @@ class DisplayMetrics extends React.Component {
   };
 
   render() {
-    const data = this.props.dataCSV;
+    const data = this.props.dataCSV.data;
     const campaignOrChannel = this.state.campaignOrChannel;
     const numberOfClicks = calculateClicks(campaignOrChannel, data);
     const numberOfImpresions = calculateImpressions(campaignOrChannel, data);

@@ -1,8 +1,8 @@
 import _ from "lodash";
 
 const calculateClicks = (campaignOrChannel, data) => {
-  const rawData = data.data;
-  const clicks = _.filter(rawData, element => {
+  const receivedData = data;
+  const clicks = _.filter(receivedData, element => {
     if (
       _.isEqual(element.campaign, campaignOrChannel) ||
       _.isEqual(element.channel, campaignOrChannel)
