@@ -1,11 +1,9 @@
 import React from "react";
 
-const MetricValue = props => (
+const MetricValue = ({ label, value }) => (
   <div>
-    <label>{props.labelOneText}</label>
-    <span className="left-metric-value">{props.numberOfClicks}</span>
-    <label>{props.labelTwoText}</label>
-    <span className="right-metric-value">{props.numberOfImpresions}</span>
+    <label>{label}</label>
+    <span className="metric-value">{value}</span>
   </div>
 );
 

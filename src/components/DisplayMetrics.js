@@ -80,12 +80,8 @@ class DisplayMetrics extends React.Component {
           placeholder=""
           onChange={this.calculateClicksAndImpressions}
         />
-        <MetricValue
-          labelOneText="Clicks: "
-          labelTwoText="Impressions: "
-          numberOfClicks={numberOfClicks}
-          numberOfImpresions={numberOfImpresions}
-        />
+        <MetricValue label="Clicks: " value={numberOfClicks} />
+        <MetricValue label="Impressions: " value={numberOfImpresions} />
       </div>
     );
   }

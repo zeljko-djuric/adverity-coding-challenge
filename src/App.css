@@ -61,13 +61,9 @@
 }
 
 /* Dashboard */
-.left-metric-value {
+.metric-value {
   color: red;
   padding-right: 1rem;
-}
-
-.right-metric-value {
-  color: red;
 }
 
 .select-field {
