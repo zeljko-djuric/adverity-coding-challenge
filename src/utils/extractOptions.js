@@ -7,6 +7,8 @@ const extractOptions = data => {
       { label: data.data[i].channel }
     ];
   });
+  console.log(options);
+
   return options;
 };
 export default extractOptions;
