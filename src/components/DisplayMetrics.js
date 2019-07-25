@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import _ from "lodash";
+import uniqueObjects from "../utils/uniqueObjects";
 
 class DisplayMetrics extends React.Component {
   constructor(args) {
@@ -72,15 +73,10 @@ class DisplayMetrics extends React.Component {
   render() {
     const numberOfClicks = this.state.clicks;
     const numberOfImpresions = this.state.impressions;
-    const uniqueCampaign = _.uniqWith(
+    const selectSuggestions = uniqueObjects(
       this.state.suggestionsForCampaign,
-      _.isEqual
+      this.state.suggestionsForChannel
     );
-    const uniqeChannel = _.uniqWith(
-      this.state.suggestionsForChannel,
-      _.isEqual
-    );
-    const selectSuggestions = _.concat(uniqeChannel, uniqueCampaign);
     return (
       <div className="user-choice">
         <h3>Choose channel or campaign:</h3>
