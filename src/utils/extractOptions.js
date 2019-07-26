@@ -1,8 +1,8 @@
 const extractOptions = data => {
-  let options = [];
+  const options = [];
   data.data.map(item => {
-    let campaign = {};
-    let channel = {};
+    const campaign = {};
+    const channel = {};
     campaign["label"] = item.campaign;
     channel["label"] = item.channel;
     options.push(campaign);
