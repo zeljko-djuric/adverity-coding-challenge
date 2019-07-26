@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import _ from "lodash";
+import MetricValue from "./MetricValue";
 
 class DisplayMetrics extends React.Component {
   constructor(args) {
@@ -71,7 +72,7 @@ class DisplayMetrics extends React.Component {
     const selectSuggestions = _.uniqWith(this.state.suggestions, _.isEqual);
     return (
       <div className="user-choice">
-        <h3>Choose channel or campaign:</h3>
+        <h3>{this.props.title}</h3>
 
         <Select
           className="select-field"
@@ -79,11 +80,8 @@ class DisplayMetrics extends React.Component {
           placeholder=""
           onChange={this.calculateClicksAndImpressions}
         />
-
-        <label>Clicks: </label>
-        <span className="clicks">{numberOfClicks}</span>
-        <label>Impressions: </label>
-        <span className="impressions">{numberOfImpresions}</span>
+        <MetricValue label="Clicks: " value={numberOfClicks} />
+        <MetricValue label="Impressions: " value={numberOfImpresions} />
       </div>
     );
   }
