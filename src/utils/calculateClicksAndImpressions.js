@@ -1,16 +1,15 @@
 import _ from "lodash";
 
 const calculateClicksAndImpressions = (campaignOrChannel, data, metricName) => {
-  const metricValue = _.filter(data, element => {
-    if (
-      _.isEqual(element.campaign, campaignOrChannel) ||
-      _.isEqual(element.channel, campaignOrChannel)
-    ) {
-      return element;
-    }
-  });
-  const totalSum = _.sumBy(metricValue, metricName);
-  return totalSum;
+  return _.sumBy(
+    _.filter(
+      data,
+      item =>
+        _.isEqual(item.campaign, campaignOrChannel) ||
+        _.isEqual(item.channel, campaignOrChannel)
+    ),
+    metricName
+  );
 };
 
 export default calculateClicksAndImpressions;
