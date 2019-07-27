@@ -1,8 +1,7 @@
 import _ from "lodash";
 
 const calculateClicksAndImpressions = (campaignOrChannel, data, metricName) => {
-  const receivedData = data;
-  const metricValue = _.filter(receivedData, element => {
+  const metricValue = _.filter(data, element => {
     if (
       _.isEqual(element.campaign, campaignOrChannel) ||
       _.isEqual(element.channel, campaignOrChannel)
