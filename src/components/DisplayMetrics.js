@@ -1,8 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import _ from "lodash";
-import calculateClicks from "../utils/calculateClicks";
-import calculateImpressions from "../utils/calculateImpressions";
+import calculateClicksAndImpressions from "../utils/calculateClicksAndImpressions";
 
 class DisplayMetrics extends React.Component {
   constructor(args) {
@@ -36,8 +35,16 @@ class DisplayMetrics extends React.Component {
   render() {
     const data = this.props.dataCSV.data;
     const campaignOrChannel = this.state.campaignOrChannel;
-    const numberOfClicks = calculateClicks(campaignOrChannel, data);
-    const numberOfImpresions = calculateImpressions(campaignOrChannel, data);
+    const numberOfClicks = calculateClicksAndImpressions(
+      campaignOrChannel,
+      data,
+      "clicks"
+    );
+    const numberOfImpresions = calculateClicksAndImpressions(
+      campaignOrChannel,
+      data,
+      "impressions"
+    );
     const selectSuggestions = _.uniqWith(this.state.suggestions, _.isEqual);
 
     return (
