@@ -1,7 +1,7 @@
 import _ from "lodash";
 
-const calculateClicksAndImpressions = (campaignOrChannel, data, metricName) => {
-  return _.sumBy(
+const calculateClicksAndImpressions = (campaignOrChannel, data, metricName) =>
+  _.sumBy(
     _.filter(
       data,
       item =>
@@ -10,6 +10,5 @@ const calculateClicksAndImpressions = (campaignOrChannel, data, metricName) => {
     ),
     metricName
   );
-};
 
 export default calculateClicksAndImpressions;
