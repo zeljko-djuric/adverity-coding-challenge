@@ -45,7 +45,7 @@ class App extends React.Component {
       <div>
         <Header ImageUrl={ImageUrl} />
         <Title title={title} description={description} />
-        <DisplayMetrics data={dataCSV} />
+        <DisplayMetrics dataCSV={dataCSV} title="Choose channel or campaign:" />
       </div>
     );
   }
