@@ -1,6 +1,8 @@
+import _ from "lodash";
+
 const extractOptions = data => {
   const options = [];
-  data.data.map(item => {
+  _.flatMap(data.data, item => {
     const campaign = {};
     const channel = {};
     campaign["label"] = item.campaign;
@@ -9,6 +11,7 @@ const extractOptions = data => {
     options.push(channel);
     return options;
   });
+  console.log(options);
   return options;
 };
 export default extractOptions;
