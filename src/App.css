@@ -61,13 +61,9 @@
 }
 
 /* Dashboard */
-.clicks {
+.metric-value {
   color: red;
   padding-right: 1rem;
-}
-
-.impressions {
-  color: red;
 }
 
 .select-field {

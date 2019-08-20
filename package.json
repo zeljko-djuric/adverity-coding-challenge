@@ -12,6 +12,12 @@
     "react-scripts": "3.0.1",
     "react-select": "^2.4.3"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -38,5 +44,10 @@
   },
   "devDependencies": {
     "prettier": "1.17.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
