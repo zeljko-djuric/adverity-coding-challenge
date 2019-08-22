@@ -155,17 +155,5 @@ const data = [
 const option1 = "DE|SN|Longboard|Generisch";
 const option2 = "Search";
 const option3 = "AT|SN|Snowboard|Generisch";
-// const option4 = "DE | SP Gadgets";
-// const option5 = "DE|SN|Snowboard|Brands";
-// const option6 = "EN | SP Gadgets";
-// const option7 = "AT|SN|Skullcandy";
-// const option8 = "AT|SN|Longboard|Generisch";
-// const option9 = "AT|SN|Audio&Video|Brands";
-// const option10 = "AT|SN|Skate|Generisch";
-// const option11 = "AT|SN|Snowboard|Brands";
-// const option12 = "DE|SN|Accessoires|Brands";
-// const option13 = "DE|SN|Skullcandy";
-// const option14 = "AT|SN|Skate|Brands";
-// const option15 = "Display";
 
 export default { data, option1, option2, option3 };
