@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import _ from "lodash";
+import calculateClicksAndImpressions from "../utils/calculateClicksAndImpressions";
 import uniqueObjects from "../utils/uniqueObjects";
 import MetricValue from "./MetricValue";
 
@@ -11,7 +12,8 @@ class DisplayMetrics extends React.Component {
       suggestionsForCampaign: [],
       suggestionsForChannel: [],
       clicks: 0,
-      impressions: 0
+      impressions: 0,
+      campaignOrChannel: ""
     };
   }
 
@@ -30,50 +32,25 @@ class DisplayMetrics extends React.Component {
     });
   }
 
-  calculateClicksAndImpressions = event => {
-    const selectedSuggestion = event.label;
-    const rawData = this.props.dataCSV.data;
-
-    const clicksAndImpressions = _.filter(rawData, element => {
-      if (
-        _.isEqual(element.campaign, selectedSuggestion) ||
-        _.isEqual(element.channel, selectedSuggestion)
-      ) {
-        return element;
-      }
-    });
-
-    const totalClicks = _.sumBy(clicksAndImpressions, "clicks");
-    const totalImpressions = _.sumBy(clicksAndImpressions, "impressions");
-
-    // Another solution for calculating sum and clicks
-    // const newCalculationClicks = _.sumBy(rawData, function(element) {
-    //   if (
-    //     element.campaign === selectedSuggestion ||
-    //     element.channel === selectedSuggestion
-    //   )
-    //     return element.clicks;
-    // });
-    // console.log(newCalculationClicks);
-
-    // const newCalculationImpressions = _.sumBy(rawData, function(element) {
-    //   if (
-    //     element.campaign === selectedSuggestion ||
-    //     element.channel === selectedSuggestion
-    //   )
-    //     return element.impressions;
-    // });
-    // console.log(newCalculationImpressions);
-
+  getCampaignOrChannel = event => {
     this.setState({
-      clicks: totalClicks,
-      impressions: totalImpressions
+      campaignOrChannel: event.label
     });
   };
 
   render() {
-    const numberOfClicks = this.state.clicks;
-    const numberOfImpresions = this.state.impressions;
+    const data = this.props.dataCSV.data;
+    const campaignOrChannel = this.state.campaignOrChannel;
+    const numberOfClicks = calculateClicksAndImpressions(
+      campaignOrChannel,
+      data,
+      "clicks"
+    );
+    const numberOfImpresions = calculateClicksAndImpressions(
+      campaignOrChannel,
+      data,
+      "impressions"
+    );
     const selectSuggestions = uniqueObjects(
       this.state.suggestionsForCampaign,
       this.state.suggestionsForChannel
@@ -86,7 +63,7 @@ class DisplayMetrics extends React.Component {
           className="select-field"
           options={selectSuggestions}
           placeholder=""
-          onChange={this.calculateClicksAndImpressions}
+          onChange={event => this.getCampaignOrChannel(event)}
         />
         <MetricValue label="Clicks: " value={numberOfClicks} />
         <MetricValue label="Impressions: " value={numberOfImpresions} />
