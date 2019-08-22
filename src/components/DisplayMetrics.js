@@ -8,8 +8,6 @@ class DisplayMetrics extends React.Component {
   constructor(args) {
     super(args);
     this.state = {
-      clicks: 0,
-      impressions: 0,
       campaignOrChannel: ""
     };
   }
