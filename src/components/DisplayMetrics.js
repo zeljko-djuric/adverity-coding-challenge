@@ -10,7 +10,8 @@ class DisplayMetrics extends React.Component {
     this.state = {
       options: [],
       clicks: 0,
-      impressions: 0
+      impressions: 0,
+      campaignOrChannel: ""
     };
   }
 
@@ -56,8 +57,7 @@ class DisplayMetrics extends React.Component {
     // console.log(newCalculationImpressions);
 
     this.setState({
-      clicks: totalClicks,
-      impressions: totalImpressions
+      campaignOrChannel: event.label
     });
   };
 
@@ -73,7 +73,7 @@ class DisplayMetrics extends React.Component {
           className="select-field"
           options={options}
           placeholder=""
-          onChange={this.calculateClicksAndImpressions}
+          onChange={event => this.getCampaignOrChannel(event)}
         />
         <MetricValue label="Clicks: " value={numberOfClicks} />
         <MetricValue label="Impressions: " value={numberOfImpresions} />
