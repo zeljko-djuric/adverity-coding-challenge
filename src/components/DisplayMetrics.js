@@ -4,6 +4,7 @@ import _ from "lodash";
 import calculateClicksAndImpressions from "../utils/calculateClicksAndImpressions";
 import uniqueObjects from "../utils/uniqueObjects";
 import MetricValue from "./MetricValue";
+import extractOptions from "../utils/extractOptions";
 
 class DisplayMetrics extends React.Component {
   constructor(args) {
@@ -15,20 +16,10 @@ class DisplayMetrics extends React.Component {
       campaignOrChannel: ""
     };
   }
-
   componentWillReceiveProps(props) {
-    props.dataCSV.data.forEach((element, i) => {
-      this.setState((state, props) => ({
-        suggestionsForCampaign: [
-          ...state.suggestionsForCampaign,
-          { label: props.dataCSV.data[i].campaign }
-        ],
-        suggestionsForChannel: [
-          ...state.suggestionsForChannel,
-          { label: props.dataCSV.data[i].channel }
-        ]
-      }));
-    });
+    this.setState((state, props) => ({
+      options: extractOptions(props.data)
+    }));
   }
 
   getCampaignOrChannel = event => {
@@ -38,7 +29,7 @@ class DisplayMetrics extends React.Component {
   };
 
   render() {
-    const data = this.props.dataCSV.data;
+    const data = this.props.data.data;
     const campaignOrChannel = this.state.campaignOrChannel;
     const numberOfClicks = calculateClicksAndImpressions(
       campaignOrChannel,
