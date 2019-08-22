@@ -12,6 +12,6 @@ const extractOptions = data => {
     return options;
   });
   console.log(options);
-  return options;
+  return _.uniqBy(options, "label");
 };
 export default extractOptions;
