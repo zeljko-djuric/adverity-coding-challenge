@@ -1,8 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import _ from "lodash";
 import calculateClicksAndImpressions from "../utils/calculateClicksAndImpressions";
-import uniqueObjects from "../utils/uniqueObjects";
 import MetricValue from "./MetricValue";
 import extractOptions from "../utils/extractOptions";
 
@@ -15,11 +13,6 @@ class DisplayMetrics extends React.Component {
       campaignOrChannel: ""
     };
   }
-  // componentWillReceiveProps(props) {
-  //   this.setState((state, props) => ({
-  //     options: extractOptions(props.data)
-  //   }));
-  // }
 
   getCampaignOrChannel = event => {
     this.setState({
