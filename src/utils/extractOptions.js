@@ -11,7 +11,6 @@ const extractOptions = data => {
     options.push(channel);
     return options;
   });
-  console.log(options);
   return _.uniqBy(options, "label");
 };
 export default extractOptions;
