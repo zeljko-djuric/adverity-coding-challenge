@@ -10,17 +10,16 @@ class DisplayMetrics extends React.Component {
   constructor(args) {
     super(args);
     this.state = {
-      options: [],
       clicks: 0,
       impressions: 0,
       campaignOrChannel: ""
     };
   }
-  componentWillReceiveProps(props) {
-    this.setState((state, props) => ({
-      options: extractOptions(props.data)
-    }));
-  }
+  // componentWillReceiveProps(props) {
+  //   this.setState((state, props) => ({
+  //     options: extractOptions(props.data)
+  //   }));
+  // }
 
   getCampaignOrChannel = event => {
     this.setState({
@@ -41,10 +40,7 @@ class DisplayMetrics extends React.Component {
       data,
       "impressions"
     );
-    const selectSuggestions = uniqueObjects(
-      this.state.suggestionsForCampaign,
-      this.state.suggestionsForChannel
-    );
+    const selectSuggestions = extractOptions(this.props.data);
     return (
       <div className="user-choice">
         <h3>{this.props.title}</h3>

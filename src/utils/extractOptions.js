@@ -11,6 +11,7 @@ const extractOptions = data => {
     options.push(channel);
     return options;
   });
+  console.log(options);
   return options;
 };
 export default extractOptions;
