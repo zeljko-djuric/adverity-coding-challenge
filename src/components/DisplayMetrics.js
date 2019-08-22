@@ -33,14 +33,14 @@ class DisplayMetrics extends React.Component {
       data,
       "impressions"
     );
-    const selectSuggestions = extractOptions(this.props.data);
+    const options = extractOptions(this.props.data);
     return (
       <div className="user-choice">
         <h3>{this.props.title}</h3>
 
         <Select
           className="select-field"
-          options={selectSuggestions}
+          options={options}
           placeholder=""
           onChange={event => this.getCampaignOrChannel(event)}
         />
