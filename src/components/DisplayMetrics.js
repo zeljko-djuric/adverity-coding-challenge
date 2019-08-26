@@ -6,7 +6,6 @@ import MetricValue from "./MetricValue";
 import extractOptions from "../utils/extractOptions";
 
 type Props = {
-  label: string,
   data: Object,
   title: string
 };
