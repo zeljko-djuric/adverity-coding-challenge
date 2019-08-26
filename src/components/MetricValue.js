@@ -1,7 +1,12 @@
 // @flow
 import React from "react";
 
-const MetricValue = ({ label, value }) => (
+type Props = {
+  label: string,
+  value: number
+};
+
+const MetricValue = ({ label, value }: Props) => (
   <div>
     <label>{label}</label>
     <span className="metric-value">{value}</span>
