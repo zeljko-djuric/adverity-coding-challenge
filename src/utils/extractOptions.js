@@ -1,7 +1,11 @@
 // @flow
 import _ from "lodash";
 
-const extractOptions = data => {
+type Props = {
+  data: Object
+};
+
+const extractOptions = (data: Props) => {
   const options = _.map(
     _.flatMap(data.data, item => [item.campaign, item.channel]),
     item => ({
