@@ -1,3 +1,4 @@
+// @flow
 import _ from "lodash";
 
 const calculateClicksAndImpressions = (campaignOrChannel, data, metricName) =>
