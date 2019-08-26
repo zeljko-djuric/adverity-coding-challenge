@@ -5,7 +5,13 @@ import calculateClicksAndImpressions from "../utils/calculateClicksAndImpression
 import MetricValue from "./MetricValue";
 import extractOptions from "../utils/extractOptions";
 
-const DisplayMetrics = props => {
+type Props = {
+  label: string,
+  data: Object,
+  title: string
+};
+
+const DisplayMetrics = (props: Props) => {
   const [campaignOrChannel, setCampaignOrChannel] = useState("");
 
   const getCampaignOrChannel = event => {
