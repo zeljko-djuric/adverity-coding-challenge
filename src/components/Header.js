@@ -1,7 +1,11 @@
 // @flow
 import React from "react";
 
-const Header = props => (
+type HeaderProp = {
+  ImageUrl: string
+};
+
+const Header = (props: HeaderProp) => (
   <div className="header">
     <img className="header_img" src={props.ImageUrl} alt="Logo" />
   </div>
