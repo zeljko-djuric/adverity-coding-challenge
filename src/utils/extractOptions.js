@@ -5,9 +5,9 @@ type Props = {
   data: Object
 };
 
-const extractOptions = (data: Props) => {
+const extractOptions = ({data}: Props) => {
   const options = _.map(
-    _.flatMap(data.data, item => [item.campaign, item.channel]),
+    _.flatMap(data, item => [item.campaign, item.channel]),
     item => ({
       label: item
     })
