@@ -1,9 +1,14 @@
 import React from "react";
 
-const Title = props => (
+type Props = {
+  title: string,
+  description: string
+};
+
+const Title = ({ title, description }: Props) => (
   <div className="tittle-box">
-    <h1 className="tittle-box_tittle">{props.title}</h1>
-    <p className="tittle-box_description">{props.description}</p>
+    <h1 className="tittle-box_tittle">{title}</h1>
+    <p className="tittle-box_description">{description}</p>
   </div>
 );
 

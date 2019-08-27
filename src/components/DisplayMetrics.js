@@ -10,28 +10,27 @@ type Props = {
   title: string
 };
 
-const DisplayMetrics = (props: Props) => {
+const DisplayMetrics = ({ data, title }: Props) => {
   const [campaignOrChannel, setCampaignOrChannel] = useState("");
 
   const getCampaignOrChannel = event => {
     setCampaignOrChannel(event.label);
   };
 
-  const data = props.data.data;
   const numberOfClicks = calculateClicksAndImpressions(
     campaignOrChannel,
-    data,
+    data.data,
     "clicks"
   );
   const numberOfImpresions = calculateClicksAndImpressions(
     campaignOrChannel,
-    data,
+    data.data,
     "impressions"
   );
-  const options = extractOptions(props.data);
+  const options = extractOptions(data);
   return (
     <div className="user-choice">
-      <h3>{props.title}</h3>
+      <h3>{title}</h3>
 
       <Select
         className="select-field"

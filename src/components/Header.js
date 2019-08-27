@@ -2,12 +2,12 @@
 import React from "react";
 
 type Props = {
-  ImageUrl: string
+  imageUrl: string
 };
 
-const Header = (props: Props) => (
+const Header = ({ imageUrl }: Props) => (
   <div className="header">
-    <img className="header_img" src={props.ImageUrl} alt="Logo" />
+    <img className="header_img" src={imageUrl} alt="Logo" />
   </div>
 );
 
