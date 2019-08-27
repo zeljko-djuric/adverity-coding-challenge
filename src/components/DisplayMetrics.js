@@ -17,6 +17,7 @@ const DisplayMetrics = ({ data, title }: Props) => {
     setCampaignOrChannel(event.label);
   };
 
+  console.log(typeof data);
   const numberOfClicks = calculateClicksAndImpressions(
     campaignOrChannel,
     data.data,
