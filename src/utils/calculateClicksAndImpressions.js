@@ -1,6 +1,12 @@
+// @flow
 import _ from "lodash";
+import type { ReceivedData } from "../types/ReceivedData";
 
-const calculateClicksAndImpressions = (campaignOrChannel, data, metricName) =>
+const calculateClicksAndImpressions = (
+  campaignOrChannel: string,
+  data: ReceivedData,
+  metricName: string
+) =>
   _.sumBy(
     _.filter(
       data,

@@ -1,3 +1,4 @@
+// @flow
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
@@ -25,11 +26,11 @@ const App = () => {
   const title = "Programming Challenge";
   const description =
     "JavaScript: datastructures, typeAhead, groupBy / filter, aggregates";
-  const ImageUrl = require("./img/logo.png");
+  const imageUrl = require("./img/logo.png");
 
   return (
     <div>
-      <Header ImageUrl={ImageUrl} />
+      <Header imageUrl={imageUrl} />
       <Title title={title} description={description} />
       <DisplayMetrics data={dataCSV} title="Choose channel or campaign:" />
     </div>

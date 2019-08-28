@@ -1,31 +1,36 @@
+// @flow
 import React, { useState } from "react";
 import Select from "react-select";
 import calculateClicksAndImpressions from "../utils/calculateClicksAndImpressions";
 import MetricValue from "./MetricValue";
 import extractOptions from "../utils/extractOptions";
+import type { ReceivedData } from "../types/ReceivedData";
 
-const DisplayMetrics = props => {
+type Props = {
+  data: ReceivedData,
+  title: string
+};
+
+const DisplayMetrics = ({ data, title }: Props) => {
   const [campaignOrChannel, setCampaignOrChannel] = useState("");
 
   const getCampaignOrChannel = event => {
     setCampaignOrChannel(event.label);
   };
-
-  const data = props.data.data;
   const numberOfClicks = calculateClicksAndImpressions(
     campaignOrChannel,
-    data,
+    data.data,
     "clicks"
   );
   const numberOfImpresions = calculateClicksAndImpressions(
     campaignOrChannel,
-    data,
+    data.data,
     "impressions"
   );
-  const options = extractOptions(props.data);
+  const options = extractOptions(data);
   return (
     <div className="user-choice">
-      <h3>{props.title}</h3>
+      <h3>{title}</h3>
 
       <Select
         className="select-field"
