@@ -1,12 +1,9 @@
 // @flow
 import _ from "lodash";
+import type { ReceivedData } from "../types/ReceivedData";
 
 type Props = {
-  data: Object<{
-    data: Array,
-    errors: Object,
-    meta: Object
-  }>,
+  data: ReceivedData
 };
 
 const extractOptions = ({data}: Props) => {

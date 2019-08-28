@@ -1,13 +1,10 @@
 // @flow
 import _ from "lodash";
+import type { ReceivedData } from "../types/ReceivedData";
 
 const calculateClicksAndImpressions = (
   campaignOrChannel: string,
-  data: Object<{
-    data: Array,
-    errors: Object,
-    meta: Object
-  }>,
+  data: ReceivedData,
   metricName: string
 ) =>
   _.sumBy(

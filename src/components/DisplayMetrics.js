@@ -4,13 +4,10 @@ import Select from "react-select";
 import calculateClicksAndImpressions from "../utils/calculateClicksAndImpressions";
 import MetricValue from "./MetricValue";
 import extractOptions from "../utils/extractOptions";
+import type { ReceivedData } from "../types/ReceivedData";
 
 type Props = {
-  data: Object<{
-    data: Array,
-    errors: Object,
-    meta: Object
-  }>,
+  data: ReceivedData,
   title: string
 };
 
