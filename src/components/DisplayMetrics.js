@@ -6,7 +6,11 @@ import MetricValue from "./MetricValue";
 import extractOptions from "../utils/extractOptions";
 
 type Props = {
-  data: Object,
+  data: Object<{
+    data: Array,
+    errors: Object,
+    meta: Object
+  }>,
   title: string
 };
 
@@ -16,7 +20,6 @@ const DisplayMetrics = ({ data, title }: Props) => {
   const getCampaignOrChannel = event => {
     setCampaignOrChannel(event.label);
   };
-
   const numberOfClicks = calculateClicksAndImpressions(
     campaignOrChannel,
     data.data,

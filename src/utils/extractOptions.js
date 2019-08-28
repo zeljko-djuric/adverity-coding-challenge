@@ -2,7 +2,11 @@
 import _ from "lodash";
 
 type Props = {
-  data: Object
+  data: Object<{
+    data: Array,
+    errors: Object,
+    meta: Object
+  }>,
 };
 
 const extractOptions = ({data}: Props) => {

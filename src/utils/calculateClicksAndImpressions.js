@@ -3,7 +3,11 @@ import _ from "lodash";
 
 const calculateClicksAndImpressions = (
   campaignOrChannel: string,
-  data: Object,
+  data: Object<{
+    data: Array,
+    errors: Object,
+    meta: Object
+  }>,
   metricName: string
 ) =>
   _.sumBy(
